@@ -8,6 +8,8 @@ app.use(express.urlencoded({extended: true}));
 
 app.use(express.static('public'));
 
-require('./routes/htmlRoutes/index')(app);
+const routes = require('./routes/htmlRoutes/index');
+
+routes(app);
 
 app.listen(PORT, () => console.log (`Server  started at http://localhost:${PORT}`));
