@@ -10,6 +10,6 @@ app.use(express.static('public'));
 
 const routes = require('./routes/htmlRoutes/index');
 
-routes(app);
+app.use(routes);
 
 app.listen(PORT, () => console.log (`Server  started at http://localhost:${PORT}`));
