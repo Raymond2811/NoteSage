@@ -19,4 +19,18 @@ router.get('/api/notes', (req, res) => {
     });
 });
 
+router.post('/api/notes', (req,res) => {
+    let newNote ={
+       id: uuid(),
+        title:req.body.title,
+        text:req.body.text
+    };
+
+    let oldNote = JSON.parse(fs.readFileSync(db,"utf-8"))
+    oldNote.push(newNote)
+    fs.writeFileSync('./db/db.json',JSON.stringify(oldNote,null,2))
+
+    res.json(oldNote);
+});
+
 module.exports = router;
